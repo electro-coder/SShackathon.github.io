@@ -11,7 +11,6 @@ body {
 
 .container {
   border: 2px solid #dedede;
-  background-color: #f1f1f1;
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0;
@@ -19,7 +18,6 @@ body {
 
 .darker {
   border-color: #ccc;
-  background-color: #ddd;
 }
 
 .container::after {
@@ -51,65 +49,154 @@ body {
   float: left;
   color: #999;
 }
+
+.button{
+    background-color: #1ec487;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.buttondiff{
+    background-color: #1ec487;
+    border: none;
+    color: white;
+    padding: 30px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    /* margin: 4px 2px; */
+    cursor: pointer;
+    border-radius: 4px;
+}
+body{
+    background: white;
+    background-image: radial-gradient(rgb(60, 58, 58) 1px, transparent 0) ;
+    background-size: 40px 40px;
+    background-position: -19px -19px;
+}
+
+h1 {
+  font-size: 80px;
+}
+
+h3 {
+  color:#1ec487;
+  font-size: 50px;
+}
+
+.navbar{
+    display: inline; 
+}
+
+.main{
+    font-family: Arial, Helvetica, sans-serif;
+}
 </style>
 </head>
-<body>
-
+<body >
+    
 {% if user.is_authenticated %}
-    <div align="center">
-        <h2>Django Chat</h2>
+
+    <div class="bdy">
+        <div align="center">
+            <h2>Doubt Submission Portal</h2>
+        </div>
+
+
+        <div class="container">
+            <style>
+            input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
+
+            input[type=submit] {
+            width: 100%;
+            background-color: #1ec487;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            }
+
+            input[type=submit]:hover {
+            background-color: #45a049;
+            }
+
+            div {
+            border-radius: 5px;
+            background-color: white;
+            padding: 20px;
+            }
+            </style>
+
+            <form id="post-form" method="POST" action="checkview">
+                {% csrf_token %}
+                <label>Team Number</label>
+                <input type="text" name="room_name" id="room_name" width="100px" />
+                <label>Mentor Name</label>
+                <input type="text" name="username" id="username" width="100px" />
+                <input type="submit" value="Ask Doubts">
+            </form>
+            <button class="button"type="submit"><a href="/signout">SignOut</a></button>
+        </div> 
     </div>
-
-
-    <div class="container">
-        <style>
-        input[type=text], select {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        }
-
-        input[type=submit] {
-        width: 100%;
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        }
-
-        input[type=submit]:hover {
-        background-color: #45a049;
-        }
-
-        div {
-        border-radius: 5px;
-        background-color: #f2f2f2;
-        padding: 20px;
-        }
-        </style>
-
-        <form id="post-form" method="POST" action="checkview">
-            {% csrf_token %}
-            <label>Room Name</label>
-            <input type="text" name="room_name" id="room_name" width="100px" />
-            <label>Username</label>
-            <input type="text" name="username" id="username" width="100px" />
-            <input type="submit" value="Enter Room">
-        </form>
-        <button type="submit"><a href="/signout">SignOut</a></button>
-    </div> 
     {% else %}
-        <button type="submit"><a href="/signup">SignUp</a></button>
-        <br/>
-        <br/>
-        <button type="submit"><a href="/signin">SignIn</a></button>
+    <div >
+        <div>
+            <div class="navbar" style="float: inline-start;">
+                <img src="Indian_Institute_of_Technology_Tirupati_Logo.svg.png" width="100" height="100"/>
+                <img src="SS_Logo.jpeg" width="100" height="100"/>
+            </div>
+            <div class="navbar" style="float: inline-end;">
+                <button class="button" type="submit"><a href="/signup">SignUp</a></button>
+                <button class="button" type="submit"><a href="/signin">SignIn</a></button>
+            </div>
+        </div>
+    </div>
+    <div class="main" >
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>WELCOME TO HACKATHON-2024</h1>
+        <h3>ORGANISED BY SIGMA SQUAD</h3>
+        <br>
+        <br>
+        <button class="button" onclick="myFunction()">Problem Statement</button>
+        <br>
+        <h4>LOGIN TO START THE CONTEST!</h4>
+        <h4>NEW USER? SIGN UP TO START!</h4>
+
+    <script>
+        function myFunction() {
+            location.replace("https://drive.google.com/file/d/1WOPKvKhb5UYlsjE4seZMAipPyrWQZjPC/view?usp=sharing")
+        }
+    </script>
+        
+    </div>
+        
     {% endif %}
 </body>
 

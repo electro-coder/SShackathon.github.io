@@ -59,8 +59,8 @@ def signup(request):
         messages.success(request, "Your Account has been created succesfully!! Please check your email to confirm your email address in order to activate your account.")
         
         # Welcome Email
-        subject = "Doubt Submission"
-        message = "By Team " + myuser.first_name + "Mentored by :" + myuser.last_name
+        subject = "Sign Up Request"
+        message = "Thankyou for registering,"+myuser.username +"\n Your details are : \n Team Number: " + myuser.first_name + "\n Mentored by :" + myuser.last_name
         from_email = settings.EMAIL_HOST_USER
         to_list = [myuser.email]
         send_mail(subject, message, from_email, to_list, fail_silently=False)
@@ -70,7 +70,7 @@ def signup(request):
 
         # Email Address Confirmation Email
         current_site = get_current_site(request)
-        email_subject = "Confirm your Email @ GFG - Django Login!!"
+        email_subject = "Confirm your Email"
         message2 = render_to_string('email_confirmation.html',{
             'name': myuser.first_name,
             'domain': current_site.domain,
@@ -162,7 +162,7 @@ def room(request, room):
     username = request.GET.get('username')
     room_details = Room.objects.get(name=room)
     return render(request, "authentication/room.html", {
-        'username': username,
+        'username': request.user.username,
         'room': room,
         'room_details': room_details
     })
